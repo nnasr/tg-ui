@@ -1,0 +1,21 @@
+import React from 'react';
+import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
+import ErrorOutlineRounded from '@material-ui/icons/ErrorOutlineRounded';
+class GenericError extends React.Component {
+  // render error component with appropriate error message from props
+  render() {
+    const { error } = this.props;
+    return (
+      <Paper>
+        <Typography>
+          <ErrorOutlineRounded />
+					Something went wrong
+        </Typography>
+        <Typography>{error.message}</Typography>
+      </Paper>
+    );
+  }
+}
+
+export default GenericError;
