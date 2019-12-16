@@ -1,0 +1,32 @@
+version: 2
+jobs:
+  build-dev:
+    working_directory: ~/op-ui-tg
+    docker:
+      - image: 797827902844.dkr.ecr.us-east-2.amazonaws.com/op-docker-masterimage:latest
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Check AWS CLI
+          command: aws --version
+#      - run:
+#          name: Run and publish tests
+#          command: |
+#            npm-cli-login
+#            npm i
+#            npm run test
+#            sonar-scanner
+      - run:
+          name: Build for dev
+          command: |
+            npm i
+            make build-dev
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build-dev:
+          filters:
+            branches:
+              only: development
