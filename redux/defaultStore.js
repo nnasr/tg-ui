@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
-import index from './index';
+import index from '../index';
 import thunk from 'redux-thunk';
 
 const defaultState =  {};
